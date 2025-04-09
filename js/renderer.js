@@ -6,13 +6,12 @@ const input = document.getElementById('input');
 window.telnetAPI.onData((data) => {
   output.textContent += data;
   output.scrollTop = output.scrollHeight;
-  // TODO: improve board parsing - switch games, userMove 
   // Sync telnet and GUI board
   if (data.includes('A B C D E F G')) {
+    data = data.replace('>>', '>|');
+    data = data.replace('<<', '|<');
     clearBoard();
-    let boardStr = data.split('\n').slice(2, -2);
-    for (let l in boardStr) boardStr[l] = boardStr[l].slice(6, 43);
-    console.log(boardStr);
+    let boardStr = data.split('|');
     let rank = 0;
     for (let row in boardStr) {
       if (boardStr[row].length == 37) {
@@ -23,6 +22,9 @@ window.telnetAPI.onData((data) => {
           if (col == '>' || col == '<') {
             if (col == '>') {
               userMove = sq;
+              moveSound.play();
+            } else if (col == '<') {
+              userMove = sq-1;
               moveSound.play();
             } continue;
           }
