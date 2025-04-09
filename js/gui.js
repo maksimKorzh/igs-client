@@ -95,10 +95,11 @@ function resizeCanvas() {
   canvas.width = window.innerHeight-34;
   canvas.height = canvas.width;
   drawBoard();
-  document.getElementById('terminal').innerHTML = `
-    <pre id="output" style="width: ` + (canvas.width-220) + `px; height: ` + (canvas.width-38) + `px; color: white; font-family: monospace; font-size: calc(100vw/113); overflow: auto;"></pre>
-    <input id="input" placeholder="Type a command..." style="width: ` + (canvas.width-230) + `px;" autofocus>
-  `;
+  try {
+    document.getElementById('output').style.width = canvas.width-220 + 'px';
+    document.getElementById('output').style.height = canvas.width-38 + 'px';
+    document.getElementById('input').style.width = canvas.width-230 + 'px';
+  } catch (e) {}
 }
 
 (function initGUI() {
@@ -113,4 +114,8 @@ function resizeCanvas() {
   window.addEventListener('resize', resizeCanvas);
   clearBoard();
   resizeCanvas();
+  document.getElementById('terminal').innerHTML = `
+    <pre id="output" style="width: ` + (canvas.width-220) + `px; height: ` + (canvas.width-38) + `px; color: white; font-family: monospace; font-size: calc(100vw/113); overflow: auto;"></pre>
+    <input id="input" placeholder="Type a command..." style="width: ` + (canvas.width-230) + `px;" autofocus>
+  `;
 })();
