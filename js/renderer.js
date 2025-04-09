@@ -6,6 +6,7 @@ const input = document.getElementById('input');
 window.telnetAPI.onData((data) => {
   output.textContent += data;
   output.scrollTop = output.scrollHeight;
+  doCommand(data);
 });
 
 input.addEventListener('keydown', (e) => {
