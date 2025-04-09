@@ -17,6 +17,7 @@ works during the game, otherwise you'll get an error.
     toggle client false        // use telnet interface
     toggle quiet true          // suppress system messages like user logins
     toggle verbose true        // sync telnet board with GUI board
+    toggle singlegame true     // to avoid messing with multiple challenges
 
     Above should be done just once, below is done every time:
 
@@ -26,6 +27,8 @@ works during the game, otherwise you'll get an error.
     automatch cft7821g         // challenge user cft7821g using default settings
     pass                       // pass move, see hints for scoring, you can click on board to remove dead stones
     resign                     // resign the game
+    games                      // games currently played
+    observe 100                // watch game 100, run command again to unwatch
 
 # How to install it
     git clone https://github.com/maksimKorzh/igs-client
