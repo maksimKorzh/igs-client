@@ -1,6 +1,9 @@
 # IGS Pandanet Go Client
 A client to play at IGS Pandanet Go server
 
+# How it looks?
+![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/maksimKorzh/igs-client/main/assets/scr.png)
+
 # How it works?
 You just have a telnet console forwarded to an ElectronJS web interface,
 all the actions, e.g. playing games or chatting is done purely
