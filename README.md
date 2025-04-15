@@ -29,6 +29,7 @@ works during the game, otherwise you'll get an error.
     resign                     // resign the game
     games                      // games currently played
     observe 100                // watch game 100, run command again to unwatch
+    refresh                    // resync board if something goes wrong (assuming verbose is set to true)
 
 # How to install it
     git clone https://github.com/maksimKorzh/igs-client
