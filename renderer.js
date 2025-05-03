@@ -188,6 +188,7 @@ input.addEventListener('keydown', (e) => {
     window.telnetAPI.sendCommand(cmd);
     input.value = '';
     let terminal = document.getElementById('output');
+    if (cmd.includes('refresh')) sgf = '';
     if (cmd.includes('sgf')) downloadSgf();
     terminal.scrollTop = terminal.scrollHeight;
   }
