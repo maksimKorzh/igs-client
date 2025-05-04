@@ -142,7 +142,6 @@ function downloadSgf() {
   document.body.appendChild(element);
   element.click();
   document.body.removeChild(element);
-  sgf = '';
 }
 
 const output = document.getElementById('output');
