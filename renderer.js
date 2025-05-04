@@ -135,7 +135,7 @@ function resizeCanvas() {
 function downloadSgf() {
   const element = document.createElement('a');
   const file = new Blob([
-    '(;FF[4]CA[UTF-8]GM[1]DT[?]PC[?]GN[?]PB[?]PW[?]BR[?]WR[?]TM[?]OT[?]RE[?]SZ[19]KM[6.5]RU[Japanese]' + sgf.slice(6) + ')'
+    '(;FF[4]CA[UTF-8]GM[1]PB[black]PW[white]BR[?]WR[?]RE[?]KM[6.5]RU[Japanese];' + sgf + ')'
   ], { type: 'text/plain' });
   element.href = URL.createObjectURL(file);
   element.download = 'game.sgf';
@@ -185,11 +185,13 @@ window.telnetAPI.onData((data) => {
 input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     const cmd = input.value;
-    window.telnetAPI.sendCommand(cmd);
+    if (cmd != 'clearsgf' && cmd != 'showsgf' && cmd != 'downloadsgf')
+      window.telnetAPI.sendCommand(cmd);
     input.value = '';
     let terminal = document.getElementById('output');
-    if (cmd.includes('refresh')) sgf = '';
-    if (cmd.includes('sgf')) downloadSgf();
+    if (cmd =='clearsgf') { sgf = ''; terminal.innerHTML += 'SGF has been cleared\n'; }
+    if (cmd =='showsgf') terminal.innerHTML += 'SGF:\n' + sgf + '\n';
+    if (cmd =='downloadsgf') downloadSgf();
     terminal.scrollTop = terminal.scrollHeight;
   }
 });
