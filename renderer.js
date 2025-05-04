@@ -135,7 +135,7 @@ function resizeCanvas() {
 function downloadSgf() {
   const element = document.createElement('a');
   const file = new Blob([
-    '(;FF[4]CA[UTF-8]GM[1]PB[black]PW[white]BR[?]WR[?]RE[?]KM[6.5]RU[Japanese];' + sgf + ')'
+    '(;FF[4]CA[UTF-8]GM[1]PB[black]PW[white]BR[?]WR[?]RE[?]KM[6.5]RU[Japanese]' + sgf + ')'
   ], { type: 'text/plain' });
   element.href = URL.createObjectURL(file);
   element.download = 'game.sgf';
