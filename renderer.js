@@ -132,18 +132,6 @@ function resizeCanvas() {
   `;
 })();
 
-function downloadSgf() {
-  const element = document.createElement('a');
-  const file = new Blob([
-    '(;FF[4]CA[UTF-8]GM[1]PB[black]PW[white]BR[?]WR[?]RE[?]KM[6.5]RU[Japanese]' + sgf + ')'
-  ], { type: 'text/plain' });
-  element.href = URL.createObjectURL(file);
-  element.download = 'game.sgf';
-  document.body.appendChild(element);
-  element.click();
-  document.body.removeChild(element);
-}
-
 const output = document.getElementById('output');
 const input = document.getElementById('input');
 
@@ -184,13 +172,9 @@ window.telnetAPI.onData((data) => {
 input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     const cmd = input.value;
-    if (cmd != 'clearsgf' && cmd != 'showsgf' && cmd != 'downloadsgf')
-      window.telnetAPI.sendCommand(cmd);
+    window.telnetAPI.sendCommand(cmd);
     input.value = '';
     let terminal = document.getElementById('output');
-    if (cmd =='clearsgf') { sgf = ''; terminal.innerHTML += 'SGF has been cleared\n'; }
-    if (cmd =='showsgf') terminal.innerHTML += 'SGF:\n' + sgf + '\n';
-    if (cmd =='downloadsgf') downloadSgf();
     terminal.scrollTop = terminal.scrollHeight;
   }
 });
