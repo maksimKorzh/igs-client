@@ -138,6 +138,19 @@ const input = document.getElementById('input');
 window.telnetAPI.onData((data) => {
   output.textContent += data;
   output.scrollTop = output.scrollHeight;
+  
+  // Automatch users on who command
+  if (data.includes('Info       Name       Idle   Rank')) {
+    players = [];
+    let line = data.split('\n').slice(1, -2);
+    for (let i in line) {
+      name1 = line[i].slice(12).split(' ')[0];
+      name2 = line[i].slice(49).split(' ')[0];
+      if (name1 != '') window.telnetAPI.sendCommand('automatch ' + name1);
+      if (name2 != '') window.telnetAPI.sendCommand('automatch ' + name2);
+    }
+  }
+  
   // Sync telnet and GUI board
   if (data.includes('A B C D E F G')) {
     data = data.replace('>>', '>|');
