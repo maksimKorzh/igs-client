@@ -31,6 +31,10 @@ works during the game, otherwise you'll get an error.
     observe 100                // watch game 100, run command again to unwatch
     refresh                    // resync board if something goes wrong (assuming verbose is set to true)
 
+# Shortcuts
+    TAB       pastes "automatch " to input field
+    F12 - F1  requests 12kyu - 1kyu games
+
 # How to install it
     git clone https://github.com/maksimKorzh/igs-client
     cd igs-client
