@@ -29,12 +29,30 @@ function createWindow() {
   Menu.setApplicationMenu(menu);
 
   win.loadFile('index.html');
+
+  // Clean up on window close:
+  win.on('close', () => {
+    if (client) {
+      client.end();  // Send FIN to server, graceful close
+      client.destroy();  // Force close in case end doesn't work
+      client = null;
+    }
+  });
 }
 
 app.whenReady().then(createWindow);
 
+// Clean up on app quit
+app.on('before-quit', () => {
+  if (client) {
+    client.end();
+    client.destroy();
+    client = null;
+  }
+});
+
 ipcMain.on('connect-to-igs', (event) => {
-  client = net.createConnection({ host: 'igs.joyjoy.net', port: 6969 }, () => {
+  client = net.createConnection({ host: 'igs.joyjoy.net', port: 7777 }, () => {
     console.log('Connected to IGS');
   });
 
@@ -44,6 +62,13 @@ ipcMain.on('connect-to-igs', (event) => {
 
   client.on('end', () => {
     event.sender.send('telnet-data', '\nDisconnected from server.\n');
+  });
+
+  client.on('error', (err) => {
+    console.error('Socket error:', err);
+    event.sender.send('telnet-data', `\nConnection error: ${err.message}\n`);
+    client.destroy();
+    client = null;
   });
 });
 
