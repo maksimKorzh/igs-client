@@ -189,5 +189,7 @@ input.addEventListener('keydown', (e) => {
     input.value = '';
     let terminal = document.getElementById('output');
     terminal.scrollTop = terminal.scrollHeight;
+  } else if (e.key === 'F1') {
+    input.value = 'automatch '
   }
 });
