@@ -190,30 +190,44 @@ input.addEventListener('keydown', (e) => {
     let terminal = document.getElementById('output');
     terminal.scrollTop = terminal.scrollHeight;
   } else if (e.key === 'Tab') {
+    e.preventDefault()
     input.value = 'automatch '
-  } else if (e.key === 'F10') {
-    window.telnetAPI.sendCommand('who 1d o');
-  } else if (e.key === 'F11') {
-    window.telnetAPI.sendCommand('who 2d o');
+    input.focus()
   } else if (e.key === 'F12') {
-    window.telnetAPI.sendCommand('who 3d o');
+    window.telnetAPI.sendCommand('who 10k o');
+    input.focus()
+  } else if (e.key === 'F11') {
+    window.telnetAPI.sendCommand('who 11k o');
+    input.focus()
+  } else if (e.key === 'F10') {
+    window.telnetAPI.sendCommand('who 10k o');
+    input.focus()
   } else if (e.key === 'F9') {
     window.telnetAPI.sendCommand('who 9k o');
+    input.focus()
   } else if (e.key === 'F8') {
     window.telnetAPI.sendCommand('who 8k o');
+    input.focus()
   } else if (e.key === 'F7') {
     window.telnetAPI.sendCommand('who 7k o');
+    input.focus()
   } else if (e.key === 'F6') {
     window.telnetAPI.sendCommand('who 6k o');
+    input.focus()
   } else if (e.key === 'F5') {
     window.telnetAPI.sendCommand('who 5k o');
+    input.focus()
   } else if (e.key === 'F4') {
     window.telnetAPI.sendCommand('who 4k o');
+    input.focus()
   } else if (e.key === 'F3') {
     window.telnetAPI.sendCommand('who 3k o');
+    input.focus()
   } else if (e.key === 'F2') {
     window.telnetAPI.sendCommand('who 2k o');
+    input.focus()
   } else if (e.key === 'F1') {
     window.telnetAPI.sendCommand('who 1k o');
+    input.focus()
   }
 });
