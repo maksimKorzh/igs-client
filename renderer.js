@@ -193,12 +193,6 @@ input.addEventListener('keydown', (e) => {
     e.preventDefault()
     input.value = 'automatch '
     input.focus()
-  } else if (e.key === 'F12') {
-    window.telnetAPI.sendCommand('who 10k o');
-    input.focus()
-  } else if (e.key === 'F11') {
-    window.telnetAPI.sendCommand('who 11k o');
-    input.focus()
   } else if (e.key === 'F10') {
     window.telnetAPI.sendCommand('who 10k o');
     input.focus()
