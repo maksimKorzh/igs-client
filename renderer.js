@@ -127,7 +127,7 @@ function resizeCanvas() {
   clearBoard();
   resizeCanvas();
   document.getElementById('terminal').innerHTML = `
-    <pre id="output" style="width: ` + (window.innerWidth - canvas.width-34) + `px; height: ` + (canvas.width-58) + `px; color: white; font-family: monospace; font-size: calc(100vw/113); overflow: auto;"></pre>
+    <pre id="output" style="width: ` + (window.innerWidth - canvas.width-34) + `px; height: ` + (canvas.width-58) + `px; font-family: monospace; font-size: calc(100vw/113); overflow: auto;"></pre>
     <input id="input" spellcheck="false" placeholder="Type a command..." style="width: ` + (window.innerWidth - canvas.width-34) + `px; font-size: 18px;" autofocus>
   `;
 })();
